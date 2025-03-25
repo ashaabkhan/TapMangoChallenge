@@ -49,7 +49,7 @@ This endpoint checks if an SMS message can be sent without exceeding the provide
 
 ```json
 {
-  "PhoneNumber": "+14168585949"
+  "PhoneNumber": "+14161234567"
 }
 ```
 
