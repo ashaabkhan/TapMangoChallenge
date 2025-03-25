@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 function MetricsDashboard() {
     const [metrics, setMetrics] = useState(null);
     const [phoneFilter, setPhoneFilter] = useState("");
     const [startFilter, setStartFilter] = useState("");
     const [endFilter, setEndFilter] = useState("");
-
+    
     const fetchMetrics = () => {
         if (!phoneFilter && !startFilter && !endFilter) return;
         
@@ -28,9 +29,11 @@ function MetricsDashboard() {
     };
 
     useEffect(() => {
-        fetchMetrics();
-        const interval = setInterval(fetchMetrics, 5000);
-        return () => clearInterval(interval);
+        const handler = setTimeout(() => {
+            fetchMetrics();
+        }, 500);
+
+        return () => clearTimeout(handler);
     }, [phoneFilter, startFilter, endFilter]);
 
     const filteredEvents =
@@ -62,7 +65,7 @@ function MetricsDashboard() {
                     </tbody>
                 </table>
             )}
-
+            
             <h2>Search Phone Number Events</h2>
             <div style={{ marginBottom: "20px" }}>
                 <label>

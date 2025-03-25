@@ -30,7 +30,7 @@ namespace TapMangoChallenge.Services
 
             return _events.Where(evt =>
                 evt.Timestamp >= start && evt.Timestamp <= end &&
-                (phoneNumber == null || evt.PhoneNumber == phoneNumber)
+                (phoneNumber == null || evt.PhoneNumber.Contains(phoneNumber))
             );
         }
 
